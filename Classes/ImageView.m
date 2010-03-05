@@ -22,6 +22,20 @@
 
 - (void)drawRect:(CGRect)rect {
     // Drawing code
+    UIImage *image = [UIImage imageNamed:@"photo.png"];
+    CGFloat idealSize = 300.0f;
+    CGFloat ratio = 1.0f;
+    CGFloat heightRatio = idealSize / image.size.height;
+    CGFloat widthRatio = idealSize / image.size.width;
+    
+    if (heightRatio < widthRatio) {
+        ratio = heightRatio;
+    } else {
+        ratio = widthRatio;
+    }
+    
+    CGRect imageRect = CGRectMake(10.0f, 10.0f, image.size.width * ratio, image.size.height * ratio);
+    [image drawInRect:imageRect blendMode:kCGBlendModeDifference alpha:1.0f];
 }
 
 
